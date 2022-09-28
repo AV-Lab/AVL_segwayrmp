@@ -1,0 +1,20 @@
+global_frame: odom
+robot_base_frame: base_link
+rolling_window: true
+static_map: false
+resolution: 0.25 #0.025
+controller_frequency: 20 #was 10
+publish_frequency: 20
+observation_sources: laser 
+width: 6
+height: 6
+
+# marking - add obstacle information to cost map
+# clearing - clear obstacle information to cost map
+# laser: {sensor_frame: laser, data_type: LaserScan, topic: scan, marking: true, clearing: true}
+
+
+
+plugins:
+  - {name: obstacles_laser,           type: "costmap_2d::ObstacleLayer"}
+  - {name: inflation,                 type: "costmap_2d::InflationLayer"}

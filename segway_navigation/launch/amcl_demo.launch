@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- <master auto="start"/>
+  <param name ="use_sim_time" value="false"/>
+  <remap from="map" to="/rtabmap/grid_map"/> -->
+
+  <!-- Map server -->
+  <!-- <arg name="map_file" default="$(find vehicle_navigation)/map/habshan_parking.yaml"/> -->
+  <arg name="map_file" default="$(find segway_navigation)/map/habshan_parking2.yaml"/>
+
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+  
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization"> 
+    <rosparam command="load" file="$(find segway_navigation)/params/ekf.yaml" />
+  </node>
+  <!-- Localization -->
+  <node pkg="amcl" type="amcl" name="amcl" output="screen">
+    <remap from="scan" to="/scan"/>
+    <param name="odom_frame_id" value="odom"/>
+    <param name="odom_model_type" value="diff-corrected"/>
+    <param name="base_frame_id" value="base_footprint"/>
+    <param name="update_min_d" value="0.1"/>
+    <param name="update_min_a" value="0.2"/>
+    <param name="transform_tolerance" value="0.3"/>
+    <param name="use_map_topic" value="true"/>
+    <param name="transform_tolerance" value="0.3"/>
+    <param name="laser_max_beams" value="180"/>
+    <param name="laser_z_hit" value="0.999"/>
+    <param name="laser_z_rand" value="0.001"/>
+    <param name="transform_tolerance" value="1.0"/>
+
+
+
+  </node>
+  <!-- include file="$(find amcl)/examples/amcl_diff.launch"/ -->
+  
+
+</launch>

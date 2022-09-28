@@ -1,0 +1,27 @@
+<launch> 
+
+
+    
+    
+    <!-- Run the EKF Localization node -->
+    <!-- <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization"> 
+    <rosparam command="load" file="$(find teb_planner)/params/ekf.yaml" />
+    </node> -->
+    
+    <!-- Map server -->
+    <!-- <arg name="map_file" default="/home/ipc/segway_ws/areg.yaml"/>
+    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" /> -->
+     
+    <!--- Run AMCL -->
+    <include file="$(find segway_navigation)/launch/amcl_demo.launch" />
+
+    <!--- Run Move Base -->
+    <!-- <include file="$(find teb_planner)/launch/move_base_nav_continuous.launch" /> -->
+        <include file="$(find segway_navigation)/launch/move_base.launch" />
+
+
+    <!-- <include file="$(find gps_navigation)/launch/start_navsat.launch" /> -->
+
+
+
+</launch>

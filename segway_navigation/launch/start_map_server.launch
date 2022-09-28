@@ -1,0 +1,10 @@
+<launch>
+    <arg name="map_file" default="$(find vehicle_navigation)/map/editing/editedmap_thick.yaml"/>
+    <!-- <arg name="map_file" default="$(find vehicle_navigation)/map/habshan_parking.yaml"/> -->
+
+    <node name="map_server_edited" pkg="map_server" type="map_server" args="$(arg map_file)" >
+        <remap from="map" to="editedmap"/>
+    </node>
+
+
+</launch>

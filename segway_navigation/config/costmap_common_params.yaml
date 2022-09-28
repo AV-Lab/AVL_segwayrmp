@@ -1,0 +1,40 @@
+footprint: [[-0.70, -0.42], [-0.7, 0.42], [0.55, 0.42], [0.55, -0.42]]
+footprint_padding: 0.3
+
+robot_base_frame: base_link
+update_frequency: 4.0 #was 4
+publish_frequency: 3.0 #was 3
+transform_tolerance: 0.5
+
+obstacle_range: 5.5
+raytrace_range: 6.0
+
+#layer definitions
+static:
+    enable: true
+    map_topic: /editedmap
+    subscribe_to_updates: true
+
+obstacles_laser:
+    enabled: true
+    observation_sources: laser
+    laser: {data_type: LaserScan, clearing: true, marking: true, topic: /laser, inf_is_valid: true}
+
+inflation:
+    enabled: true
+    inflation_radius: 1.0 # was 0.2 , before that 0.4
+
+# observation_sources: point_cloud_sensor
+
+#   point_cloud_sensor: {
+#     sensor_frame: front_lidar,
+#     # sensor_frame: zed2_imu_link,
+#     data_type: PointCloud2, 
+#     topic: /rtabmap/cloud_obstacles,
+#     # topic: /obstacles_cloud, 
+#     # expected_update_rate: 0.5, 
+#     # marking: true, 
+#     # clearing: true,
+#     # min_obstacle_height: -99999.0,
+#     # max_obstacle_height: 99999.0
+#     }

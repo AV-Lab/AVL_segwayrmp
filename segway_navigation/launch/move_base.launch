@@ -1,0 +1,36 @@
+<launch>
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+
+
+    <!-- <remap from="move_base_simple/goal" to="/planner_goal"/> -->
+    <param name="navfn/allow_unknown" value="true"/>  
+    
+    <param name="base_global_planner" value="navfn/NavfnROS"/>
+    <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS"/>
+    <!-- The rate in Hz at which to run the control loop and send velocity commands to the base -->
+    <param name="controller_frequency" value="50"/> 
+
+    <!-- <rosparam file="$(find teb_planner)/config_scan/base_local_planner.yaml" command="load"/> -->
+
+    <rosparam file="$(find segway_navigation)/config/teb_local_planner.yaml" command="load"/>  
+    <rosparam file="$(find segway_navigation)/config/base_global_planner.yaml" command="load"/>
+    <rosparam file="$(find segway_navigation)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find segway_navigation)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find segway_navigation)/config/local_costmap_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find segway_navigation)/config/global_costmap_params.yaml" command="load" ns="global_costmap"/>
+
+
+    <!-- local costmap, needs size -->
+    <!-- <rosparam file="$(find teb_planner)/config2/local_costmap_params.yaml" command="load" ns="local_costmap" />
+    <param name="local_costmap/width" value="10.0"/>
+    <param name="local_costmap/height" value="10.0"/> -->
+
+    <!-- static global costmap, static map provides size -->
+    <!-- old working param -->
+    <!-- <rosparam file="$(find teb_planner)/config_scan/global_costmap_params.yaml" command="load" ns="global_costmap"/>  -->
+
+    
+  </node>
+
+</launch>

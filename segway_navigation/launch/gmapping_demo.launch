@@ -1,0 +1,13 @@
+<launch>
+
+  <!--- Run gmapping -->
+  <include file="$(find segway_navigation)/launch/gmapping.launch" />
+
+  <!--- Run Move Base -->
+  <include file="$(find segway_navigation)/launch/move_base.launch" />
+
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization"> 
+    <rosparam command="load" file="$(find segway_navigation)/params/ekf.yaml" />
+  </node>
+
+</launch>
