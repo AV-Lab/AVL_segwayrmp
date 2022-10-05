@@ -11,6 +11,7 @@ roslaunch rmp_base rmp440le.launch 
 #launch smoother, needed to move
 
 roslaunch cmd_vel_smoother cmd_vel_smoother.launch 
+#roslaunch yocs_velocity_smoother standalone.launch # testing this smoother
 
 roslaunch rmp_teleop joystick.launch 
 
