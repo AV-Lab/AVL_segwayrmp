@@ -1,8 +1,22 @@
-# Segwayrmp
+# SegwayRMP
+
+## Demo Video
+
+https://github.com/user-attachments/assets/53a53dc9-f08f-44e8-a55d-37d1a7674863
+
+## Package Overview
+This repository provides a ROS interface to **Segway Robotics Mobility Platforms (RMPs)**. It consists of several packages:
+
+- **rmp_base** – controls the base and publishes sensor data and status information  
+- **rmp_teleop** – joystick interface for controlling the base  
+- **rmp_description** – URDF description of the platform(s)  
+- **rmp_msgs** – custom messages for RMP communication  
+
+---
 
 ## Clone the repo
 ```
-git clone https://github.com/AV-Lab/nissan_leaf/
+git clone https://github.com/AV-Lab/AVL_segwayrmp/
 ```
 
 **Install dependencies**
@@ -98,4 +112,10 @@ rosrun tf2_tools view_frames.py
 **usb perm**
 ```
 sudo chmod a+rw /dev/ttyACM0 
+```
+
+**echo clicked points**
+
+```
+rostopic echo /clicked_point
 ```
